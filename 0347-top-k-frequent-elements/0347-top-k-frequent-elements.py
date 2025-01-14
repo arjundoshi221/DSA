@@ -1,5 +1,6 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # get unique values
         myset = set(nums)
         unique = defaultdict(int)
        
