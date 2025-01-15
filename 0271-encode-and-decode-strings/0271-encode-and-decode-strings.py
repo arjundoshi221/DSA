@@ -5,7 +5,7 @@ class Codec:
         encoded_string = ""
 
         for word in strs:
-            word+=" "
+            word+="~*$()"
             encoded_string += word
         
         return encoded_string
@@ -13,7 +13,7 @@ class Codec:
     def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings.
         """
-        encoder = " "
+        encoder = "~*$()"
 
         decoded_string = s.split(encoder)
         decoded_string.pop(-1)
