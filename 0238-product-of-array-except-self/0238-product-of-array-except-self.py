@@ -1,31 +1,22 @@
-from typing import List
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        n = len(nums)
+        result = [1] * n  # Initialize the result array with 1s
+        
+        # Step 1: Calculate prefix products
+        prefix = 1
+        for i in range(n):
+            result[i] = prefix
+            prefix *= nums[i]
+        
+        # Step 2: Calculate suffix products and update the result array
+        suffix = 1
+        for i in range(n - 1, -1, -1):
+            result[i] *= suffix
+            suffix *= nums[i]
 
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        prod = 1
-        zero_count = 0
-        
-        # Calculate the total product and count zeroes
-        for num in nums:
-            if num == 0:
-                zero_count += 1
-            else:
-                prod *= num
-        
-        prod_list = []
-        
-        for i in range(len(nums)):
-            if zero_count > 1:
-                # If there are more than one zero, all products will be zero
-                prod_list.append(0)
-            elif zero_count == 1:
-                # If there's exactly one zero, only the position with the zero will have a non-zero product
-                if nums[i] == 0:
-                    prod_list.append(prod)
-                else:
-                    prod_list.append(0)
-            else:
-                # No zeroes in the array, use division
-                prod_list.append(prod // nums[i])
-        
-        return prod_list
+        return result
