@@ -3,6 +3,9 @@ class Solution:
         
         isAnagram = False
 
+        if len(s) != len(t):
+            return isAnagram
+
         sorted_s = ''.join(sorted(s))
         sorted_t = ''.join(sorted(t))
 
